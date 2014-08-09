@@ -1,0 +1,15 @@
+{
+    "name": "angularjs-typescript",
+    "description": "A bootstrap package for AngularJS and TypeScript",
+    "version": "0.0.1",
+    "homepage": "https://github.com/vandres/angularjs-typescript",
+    "license": "MIT",
+    "private": false,
+    "moduleType": [
+        "amd"
+    ],
+    "dependencies": {
+        "angular": "1.2.x",
+        "angular-route": "1.2.x"
+    }
+}
