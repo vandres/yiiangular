@@ -1,3 +1,6 @@
 .idea
 atlassian-ide-plugin.xml
 client/vendor/
+node_modules
+/build/
+/www/

@@ -1,7 +1,7 @@
 angular.module('de.voan.common.package1.services', [])
     .factory('CommonService', function () {
         /**
-         * @var CommonService
+         * @class CommonService
          */
         return {
             doSomethingCommon: function () {

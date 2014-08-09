@@ -9,7 +9,10 @@
         "amd"
     ],
     "dependencies": {
-        "angular": "1.2.x",
-        "angular-route": "1.2.x"
+    },
+    "devDependencies": {
+        "angular": "~1.2.x",
+        "angular-route": "~1.2.x",
+        "angular-mocks": "~1.2.x"
     }
 }
