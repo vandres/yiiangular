@@ -1,6 +1,8 @@
 angular.module('de.voan.www.user', [
+        'ngRoute',
+        'library.shared1',
         'de.voan.common.package1',
-        'ngRoute'
+        'de.voan.www.user.services'
     ])
 
     .config(function ($routeProvider) {

@@ -111,3 +111,7 @@ a img {
 :focus {
   outline: 0;
 }
+common1,
+shared1 {
+  display: block;
+}

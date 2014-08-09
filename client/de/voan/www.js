@@ -1,7 +1,7 @@
 angular.module('de.voan.www', [
-        'de.voan.www.user',
+        'ngRoute',
         'de.voan.www.todo',
-        'ngRoute'
+        'de.voan.www.user'
     ])
 
     .config(function ($locationProvider, $routeProvider) {

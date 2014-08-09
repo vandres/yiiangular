@@ -1,5 +1,7 @@
 angular.module('de.voan.www.todo', [
-        'ngRoute'
+        'ngRoute',
+        'library.shared1',
+        'de.voan.common.package1'
     ])
     .config(function ($routeProvider) {
         $routeProvider.when('/todo', {

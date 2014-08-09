@@ -17,14 +17,23 @@
 <div class="main-wrapper" ng:view>
 </div>
 
+<!-- Third party libs -->
 <script src="./vendor/angular/angular.js"></script>
 <script src="./vendor/angular-route/angular-route.js"></script>
 
+<!-- Shared between projects (library) -->
+<script src="./lib/shared1/shared1-services.js"></script>
+<script src="./lib/shared1/shared1-directives.js"></script>
+<script src="./lib/shared1/shared1.js"></script>
+
+<!-- Shared between project modules (common) -->
 <script src="./de/voan/common/package1/package1-services.js"></script>
 <script src="./de/voan/common/package1/package1-directives.js"></script>
 <script src="./de/voan/common/package1/package1.js"></script>
 
+<!-- Project modules -->
 <script src="./de/voan/www/todo/todo.js"></script>
+<script src="./de/voan/www/user/user-services.js"></script>
 <script src="./de/voan/www/user/user.js"></script>
 <script src="./de/voan/www.js"></script>
 
