@@ -12,7 +12,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-less');
     grunt.loadNpmTasks('grunt-karma');
-    grunt.loadNpmTasks('grunt-ngmin');
+    grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-html2js');
 
     /**
@@ -55,7 +55,7 @@ module.exports = function (grunt) {
             build_app_assets: {
                 files: [
                     {
-                        src: ['**'],
+                        src: ['**', '!**/gru*.less'],
                         dest: '<%= build_dir %>/assets/',
                         cwd: '<%= src_dir %>/assets',
                         expand: true
@@ -179,10 +179,10 @@ module.exports = function (grunt) {
         },
 
         /**
-         * `ng-min` annotates the sources before minifying. That is, it allows us
+         * `ng-annotate` annotates the sources before minifying. That is, it allows us
          * to code without the array syntax.
          */
-        ngmin: {
+        ngAnnotate: {
             compile: {
                 files: [
                     {
@@ -201,7 +201,7 @@ module.exports = function (grunt) {
         uglify: {
             compile: {
                 options: {
-                    mangle: false,
+                    mangle: true,
                     banner: '<%= meta.banner %>'
                 },
                 files: {
@@ -463,7 +463,7 @@ module.exports = function (grunt) {
      * minifying your code.
      */
     grunt.registerTask('compile', [
-        'less:compile', 'copy:compile_assets', 'ngmin', 'concat:compile_js', 'uglify', 'index:compile'
+        'less:compile', 'copy:compile_assets', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile'
     ]);
 
     /**
