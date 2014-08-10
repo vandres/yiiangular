@@ -14,6 +14,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-ng-annotate');
     grunt.loadNpmTasks('grunt-html2js');
+    grunt.loadNpmTasks('grunt-ts');
 
     /**
      * Load in our build configuration file.
@@ -128,6 +129,7 @@ module.exports = function (grunt) {
                     '<%= vendor_files.js %>',
                     'module.prefix',
                     '<%= build_dir %>/client/**/*.js',
+                    '!<%= build_dir %>/client/**/*.spec.js',
                     '<%= html2js.app.dest %>',
                     '<%= html2js.common.dest %>',
                     'module.suffix'
@@ -192,6 +194,21 @@ module.exports = function (grunt) {
                         expand: true
                     }
                 ]
+            }
+        },
+
+        /**
+         * TypeScript configuration
+         */
+        ts: {
+            compile: {
+                src: '<%= app_files.ts %>',
+                outDir: '<%= build_dir %>/client',
+
+                options: {
+                    // true (default) | false
+                    sourceMap: false
+                }
             }
         },
 
@@ -311,6 +328,7 @@ module.exports = function (grunt) {
                 src: [
                     '<%= build_dir %>/vendor.js',
                     '<%= build_dir %>/**/*.js',
+                    '!<%= build_dir %>/**/*.spec.js',
                     '<%= html2js.common.dest %>',
                     '<%= html2js.app.dest %>',
                     '<%= vendor_files.css %>',
@@ -427,6 +445,16 @@ module.exports = function (grunt) {
                 options: {
                     livereload: false
                 }
+            },
+
+            /*
+             * TypeScript configuration
+             */
+            ts: {
+                files: [
+                    '<%= app_files.ts %>'
+                ],
+                tasks: ['ts:compile', 'jshint:test', 'karma:unit:run']
             }
         }
     };
@@ -452,7 +480,7 @@ module.exports = function (grunt) {
      * The `build` task gets your app ready to run for development and testing.
      */
     grunt.registerTask('build', [
-        'clean', 'html2js', 'jshint', 'less:build',
+        'clean', 'html2js', 'ts:compile', 'jshint', 'less:build',
         'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
         'copy:build_appjs', 'concat:build_vendor', 'index:build', 'karmaconfig',
         'karma:continuous'

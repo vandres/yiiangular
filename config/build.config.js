@@ -24,6 +24,8 @@ module.exports = {
         js: ['<%= src_dir %>/**/*.js', '!<%= src_dir %>/**/*.spec.js', '!<%= src_dir %>/assets/**/*.js', '!<%= src_dir %>/vendor/**/*.js'],
         jsunit: ['<%= src_dir %>/**/*.spec.js'],
 
+        ts: ['<%= src_dir %>/**/*.ts'],
+
         atpl: ['<%= src_dir %>/de/**/*.html'],
         ctpl: ['<%= src_dir %>/lib/**/*.html'],
 
