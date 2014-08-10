@@ -55,7 +55,7 @@ module.exports = function (grunt) {
             build_app_assets: {
                 files: [
                     {
-                        src: ['**', '!**/gru*.less'],
+                        src: ['**', '!**/*.less'],
                         dest: '<%= build_dir %>/assets/',
                         cwd: '<%= src_dir %>/assets',
                         expand: true

@@ -29,9 +29,9 @@ module.exports = {
 
         html: [ '<%= src_dir %>/index.html' ],
         less: [
+            '!<%= src_dir %>/vendor/**/*.less',
             '<%= src_dir %>/assets/less/main.less',
-            '<%= src_dir %>/**/*.less',
-            '!<%= src_dir %>/vendor/**/*.less'
+            '<%= src_dir %>/**/*.less'
         ]
     },
 

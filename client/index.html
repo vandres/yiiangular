@@ -10,7 +10,7 @@
     <link rel="icon" href="./assets/images/favicon.ico" type="image/x-icon">
     <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
 
-    <!-- compiled CSS --><% styles.forEach( function ( file ) { %>
+    <% styles.forEach( function ( file ) { %>
     <link rel="stylesheet" type="text/css" href="<%= file %>" /><% }); %>
 </head>
 
@@ -19,7 +19,7 @@
 <div class="main-wrapper" ng:view>
 </div>
 
-<!-- compiled JavaScript --><% scripts.forEach( function ( file ) { %>
+<% scripts.forEach( function ( file ) { %>
 <script type="text/javascript" src="<%= file %>"></script><% }); %>
 </body>
 </html>
