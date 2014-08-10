@@ -1,4 +1,6 @@
 angular.module('de.voan.www', [
+        'templates-app',
+        'templates-common',
         'ngRoute',
         'de.voan.www.todo',
         'de.voan.www.user'
@@ -10,7 +12,7 @@ angular.module('de.voan.www', [
         $routeProvider.when('/', {
             controller: 'de.voan.www.index',
             templateUrl: 'de/voan/www-index.html'
-        }).otherwise('/');
+        }).otherwise({redirectTo: '/'});
     })
 
     .controller('de.voan.www.index', function ($scope) {

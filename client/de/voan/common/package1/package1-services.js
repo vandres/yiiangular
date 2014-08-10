@@ -7,5 +7,5 @@ angular.module('de.voan.common.package1.services', [])
             doSomethingCommon: function () {
                 return 'common';
             }
-        }
-    })
+        };
+    });

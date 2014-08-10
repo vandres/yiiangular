@@ -7,5 +7,5 @@ angular.module('library.shared1.services', [])
             doSomethingShared: function () {
                 return 'shared';
             }
-        }
-    })
+        };
+    });

@@ -21,11 +21,18 @@ module.exports = {
      * app's unit tests.
      */
     app_files: {
-        js: ['<%= src_dir %>/**/*.js', '!<%= src_dir %>/**/*.spec.js', '!<%= src_dir %>/assets/**/*.js'],
+        js: ['<%= src_dir %>/**/*.js', '!<%= src_dir %>/**/*.spec.js', '!<%= src_dir %>/assets/**/*.js', '!<%= src_dir %>/vendor/**/*.js'],
         jsunit: ['<%= src_dir %>/**/*.spec.js'],
 
         atpl: ['<%= src_dir %>/de/**/*.html'],
-        ctpl: ['<%= src_dir %>/lib/**/*.html']
+        ctpl: ['<%= src_dir %>/lib/**/*.html'],
+
+        html: [ '<%= src_dir %>/index.html' ],
+        less: [
+            '<%= src_dir %>/assets/less/main.less',
+            '<%= src_dir %>/**/*.less',
+            '!<%= src_dir %>/vendor/**/*.less'
+        ]
     },
 
     /**
