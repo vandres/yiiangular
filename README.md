@@ -8,23 +8,24 @@ Installation
 
 You need grunt-cli, npm, bower and tsd in the first place.
 
-```cd config```
+```cd config ```
 
-```npm install```
+```npm install ```
 
-```bower install```
+```bower install ```
 
-```tsd reinstall```
+```tsd reinstall ```
 
 Commands
 --------
 Development:
 
-```grunt watch```
+```grunt watch ```
 
 Production:
 
-```grunt```
+```grunt ```
+
 
 Credits
 -------------
