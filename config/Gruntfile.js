@@ -87,7 +87,7 @@ module.exports = function (grunt) {
             compile_assets: {
                 files: [
                     {
-                        src: ['**'],
+                        src: ['**', '!less/**'],
                         dest: '<%= compile_dir %>/assets',
                         cwd: '<%= build_dir %>/assets',
                         expand: true
@@ -117,11 +117,53 @@ module.exports = function (grunt) {
                 ],
                 dest: '<%= build_dir %>/vendor.js'
             },
+            breakpoints: {
+                src: [
+                    '<%= build_dir %>/assets/less/breakpoint-xs.less',
+                    'static/ty.prefix',
+                    '<%= build_dir %>/assets/less/breakpoint-ty.less',
+                    'static/ty.suffix',
+                    'static/sm.prefix',
+                    '<%= build_dir %>/assets/less/breakpoint-sm.less',
+                    'static/sm.suffix',
+                    'static/md.prefix',
+                    '<%= build_dir %>/assets/less/breakpoint-md.less',
+                    'static/md.suffix',
+                    'static/lg.prefix',
+                    '<%= build_dir %>/assets/less/breakpoint-lg.less',
+                    'static/lg.suffix'
+                ],
+                dest: '<%= build_dir %>/assets/less/main.less'
+            },
             less: {
                 src: [
                     '<%= app_files.less %>'
                 ],
-                dest: '<%= build_dir %>/assets/less/main.less'
+                dest: '<%= build_dir %>/assets/less/breakpoint-xs.less'
+            },
+            lessty: {
+                src: [
+                    '<%= src_dir %>/**/*-ty.less'
+                ],
+                dest: '<%= build_dir %>/assets/less/breakpoint-ty.less'
+            },
+            lesssm: {
+                src: [
+                    '<%= src_dir %>/**/*-sm.less'
+                ],
+                dest: '<%= build_dir %>/assets/less/breakpoint-sm.less'
+            },
+            lessmd: {
+                src: [
+                    '<%= src_dir %>/**/*-md.less'
+                ],
+                dest: '<%= build_dir %>/assets/less/breakpoint-md.less'
+            },
+            lesslg: {
+                src: [
+                    '<%= src_dir %>/**/*-lg.less'
+                ],
+                dest: '<%= build_dir %>/assets/less/breakpoint-lg.less'
             },
             /**
              * The `compile_js` target is the concatenation of our application source
@@ -133,12 +175,12 @@ module.exports = function (grunt) {
                 },
                 src: [
                     '<%= vendor_files.js %>',
-                    'module.prefix',
+                    'static/module.prefix',
                     '<%= build_dir %>/client/**/*.js',
                     '!<%= build_dir %>/client/**/*.spec.js',
                     '<%= html2js.app.dest %>',
                     '<%= html2js.common.dest %>',
-                    'module.suffix'
+                    'static/module.suffix'
                 ],
                 dest: '<%= compile_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.js'
             }
@@ -436,7 +478,7 @@ module.exports = function (grunt) {
              */
             less: {
                 files: ['<%= src_dir %>/**/*.less'],
-                tasks: ['less:build']
+                tasks: ['concat:lessty', 'concat:lesssm', 'concat:lessmd', 'concat:lesslg', 'concat:less', 'concat:breakpoints', 'less:build']
             },
 
             /**
@@ -486,7 +528,7 @@ module.exports = function (grunt) {
      * The `build` task gets your app ready to run for development and testing.
      */
     grunt.registerTask('build', [
-        'clean', 'html2js', 'ts:compile', 'jshint', 'concat:less', 'less:build',
+        'clean', 'html2js', 'ts:compile', 'jshint', 'concat:lessty', 'concat:lesssm', 'concat:lessmd', 'concat:lesslg', 'concat:less', 'concat:breakpoints', 'less:build',
         'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
         'copy:build_appjs', 'concat:build_vendor', 'index:build', 'karmaconfig',
         'karma:continuous'

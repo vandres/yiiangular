@@ -21,7 +21,12 @@ module.exports = {
      * app's unit tests.
      */
     app_files: {
-        js: ['<%= src_dir %>/**/*.js', '!<%= src_dir %>/**/*.spec.js', '!<%= src_dir %>/assets/**/*.js', '!<%= src_dir %>/vendor/**/*.js'],
+        js: [
+            '<%= src_dir %>/**/*.js',
+            '!<%= src_dir %>/**/*.spec.js',
+            '!<%= src_dir %>/assets/**/*.js',
+            '!<%= src_dir %>/vendor/**/*.js'
+        ],
         jsunit: ['<%= src_dir %>/**/*.spec.js'],
 
         ts: ['<%= src_dir %>/**/*.ts'],
@@ -29,11 +34,16 @@ module.exports = {
         atpl: ['<%= src_dir %>/de/**/*.html'],
         ctpl: ['<%= src_dir %>/lib/**/*.html'],
 
-        html: [ '<%= src_dir %>/index.html' ],
+        html: ['<%= src_dir %>/index.html'],
         less: [
-            '!<%= src_dir %>/vendor/**/*.less',
             '<%= src_dir %>/assets/less/**/*.less',
-            '<%= src_dir %>/**/*.less'
+            '<%= src_dir %>/lib/**/*.less',
+            '<%= src_dir %>/**/*.less',
+            '!<%= src_dir %>/**/*-ty.less',
+            '!<%= src_dir %>/**/*-sm.less',
+            '!<%= src_dir %>/**/*-md.less',
+            '!<%= src_dir %>/**/*-lg.less',
+            '!<%= src_dir %>/vendor/**/*.less'
         ]
     },
 
