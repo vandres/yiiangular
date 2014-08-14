@@ -1,6 +1,6 @@
 module de.voan.common.package1.services {
     export interface ICommonService {
-        doSomethingCommon();
+        doSomethingCommon():string;
     }
 
     class CommonService implements ICommonService {

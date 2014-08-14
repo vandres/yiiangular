@@ -1,6 +1,6 @@
 module library.shared1.services {
     interface ISharedService {
-        doSomethingShared();
+        doSomethingShared():string;
     }
 
     class SharedService implements ISharedService {

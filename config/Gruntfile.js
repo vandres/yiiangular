@@ -117,6 +117,12 @@ module.exports = function (grunt) {
                 ],
                 dest: '<%= build_dir %>/vendor.js'
             },
+            less: {
+                src: [
+                    '<%= app_files.less %>'
+                ],
+                dest: '<%= build_dir %>/assets/less/main.less'
+            },
             /**
              * The `compile_js` target is the concatenation of our application source
              * code and all specified vendor source code into a single file.
@@ -235,12 +241,12 @@ module.exports = function (grunt) {
         less: {
             build: {
                 files: {
-                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.less %>'
+                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= build_dir %>/assets/less/main.less'
                 }
             },
             compile: {
                 files: {
-                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= app_files.less %>'
+                    '<%= build_dir %>/assets/<%= pkg.name %>-<%= pkg.version %>.css': '<%= build_dir %>/assets/less/main.less'
                 },
                 options: {
                     cleancss: true,
@@ -480,7 +486,7 @@ module.exports = function (grunt) {
      * The `build` task gets your app ready to run for development and testing.
      */
     grunt.registerTask('build', [
-        'clean', 'html2js', 'ts:compile', 'jshint', 'less:build',
+        'clean', 'html2js', 'ts:compile', 'jshint', 'concat:less', 'less:build',
         'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
         'copy:build_appjs', 'concat:build_vendor', 'index:build', 'karmaconfig',
         'karma:continuous'
@@ -491,7 +497,7 @@ module.exports = function (grunt) {
      * minifying your code.
      */
     grunt.registerTask('compile', [
-        'less:compile', 'copy:compile_assets', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile'
+        'concat:less', 'less:compile', 'copy:compile_assets', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile'
     ]);
 
     /**
