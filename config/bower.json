@@ -1,8 +1,8 @@
 {
-    "name": "angularjs-typescript",
-    "description": "A bootstrap package for AngularJS and TypeScript",
+    "name": "yiiangular",
+    "description": "",
     "version": "0.0.1",
-    "homepage": "https://github.com/vandres/angularjs-typescript",
+    "homepage": "https://github.com/vandres/yiiangular",
     "license": "MIT",
     "private": false,
     "moduleType": [
@@ -13,6 +13,7 @@
     "devDependencies": {
         "angular": "~1.2.x",
         "angular-route": "~1.2.x",
+        "angular-resource": "~1.2.x",
         "angular-mocks": "~1.2.x"
     }
 }

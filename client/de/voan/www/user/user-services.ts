@@ -1,24 +1,14 @@
 module de.voan.www.user.services {
-    import common = de.voan.common.package1.services;
-
-    class UserCommonService implements common.ICommonService {
-        delegate:common.ICommonService;
-
-        constructor($delegate:common.ICommonService) {
-            this.delegate = $delegate;
-        }
-
-        doSomethingCommon() {
-            return this.delegate.doSomethingCommon() + ' overwritten by user module';
-        }
+    export interface User extends ng.resource.IResource<User> {
+        id:number;
+        name:string;
     }
 
-    angular.module('de.voan.www.user.services', [
-            'de.voan.common.package1.services'
-        ])
-        .config(function ($provide) {
-            $provide.decorator("CommonService", function ($delegate:common.ICommonService) {
-                return new UserCommonService($delegate);
-            });
+    export interface IUserResource extends ng.resource.IResourceClass<User> {
+    }
+
+    angular.module('de.voan.www.user.services', ['ngResource'])
+        .factory('UserService', function ($resource:ng.resource.IResourceService) {
+            return <IUserResource> $resource('/api/index.php/users/:id');
         });
 }

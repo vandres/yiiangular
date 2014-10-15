@@ -1,9 +1,17 @@
 <div class="de-voan-www-user">
     <h1>{{header}}</h1>
-    <common1></common1>
-    <shared1></shared1>
 
     <a href="#!/">Home</a>
     <a href="#!/user" class="active">User</a>
-    <a href="#!/todo">Todo</a>
+
+    <div class="form">
+        <input type="text" ng-minlength="3" ng-model="newuser" required />
+        <button ng-click="save(newuser)">SAVE</button>
+    </div>
+
+    <div class="list">
+       <ul>
+           <li ng-repeat="user in users">{{user.name}} ({{user.id}}) <span ng-click="delete(user)">X</span></li>
+       </ul>
+    </div>
 </div>

@@ -1,8 +1,16 @@
 .idea
+.vagrant
 .tscache
 .baseDir.ts
 atlassian-ide-plugin.xml
 client/vendor/
+server/vendor/
+server/app/runtime
 node_modules
 /build/
 /www/
+composer.phar
+composer.lock
+Vagrantfile
+puphpet
+npm-debug.log

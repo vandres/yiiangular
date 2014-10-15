@@ -1,18 +1,18 @@
 {
     "author": "Volker Andres",
-    "name": "angularjs-typescript",
-    "description": "A bootstrap package for AngularJS and TypeScript",
+    "name": "yiiangular",
+    "description": "",
     "version": "0.0.1",
     "private": true,
-    "homepage": "https://github.com/vandres/angularjs-typescript",
+    "homepage": "https://github.com/vandres/yiiangular",
     "licenses": {
         "type": "MIT",
-        "url": "https://raw.githubusercontent.com/vandres/angularjs-typescript/master/LICENSE"
+        "url": "https://raw.githubusercontent.com/vandres/yiiangular/master/LICENSE"
     },
-    "bugs": "https://github.com/vandres/angularjs-typescript/issues",
+    "bugs": "https://github.com/vandres/yiiangular/issues",
     "repository": {
         "type": "git",
-        "url": "git@github.com:vandres/angularjs-typescript.git"
+        "url": "git@github.com:vandres/yiiangular.git"
     },
     "dependencies": {},
     "devDependencies": {

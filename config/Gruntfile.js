@@ -53,6 +53,16 @@ module.exports = function (grunt) {
          * `build_dir`, and then to copy the assets to `compile_dir`.
          */
         copy: {
+            build_api: {
+                files: [
+                    {
+                        src: ['**'],
+                        dest: '<%= build_dir %>/api/',
+                        cwd: '<%= src_dir %>/api',
+                        expand: true
+                    }
+                ]
+            },
             build_app_assets: {
                 files: [
                     {
@@ -90,6 +100,16 @@ module.exports = function (grunt) {
                         src: ['**', '!less/**'],
                         dest: '<%= compile_dir %>/assets',
                         cwd: '<%= build_dir %>/assets',
+                        expand: true
+                    }
+                ]
+            },
+            compile_api: {
+                files: [
+                    {
+                        src: ['**'],
+                        dest: '<%= compile_dir %>/api',
+                        cwd: '<%= build_dir %>/api',
                         expand: true
                     }
                 ]
@@ -517,7 +537,11 @@ module.exports = function (grunt) {
      * before watching for changes.
      */
     grunt.renameTask('watch', 'delta');
-    grunt.registerTask('watch', ['build', 'karma:unit', 'delta']);
+    grunt.registerTask('watch', [
+        'build',
+        //'karma:unit',
+        'delta'
+    ]);
 
     /**
      * The default task is to build and compile.
@@ -530,8 +554,10 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean', 'html2js', 'ts:compile', 'jshint', 'concat:lessty', 'concat:lesssm', 'concat:lessmd', 'concat:lesslg', 'concat:less', 'concat:breakpoints', 'less:build',
         'concat:build_css', 'copy:build_app_assets', 'copy:build_vendor_assets',
-        'copy:build_appjs', 'concat:build_vendor', 'index:build', 'karmaconfig',
-        'karma:continuous'
+        'copy:build_appjs', 'concat:build_vendor', 'index:build',
+        //'karmaconfig',
+        //'karma:continuous',
+        'copy:build_api'
     ]);
 
     /**
@@ -539,7 +565,7 @@ module.exports = function (grunt) {
      * minifying your code.
      */
     grunt.registerTask('compile', [
-        'concat:less', 'less:compile', 'copy:compile_assets', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile'
+        'concat:less', 'less:compile', 'copy:compile_assets', 'ngAnnotate', 'concat:compile_js', 'uglify', 'index:compile', 'copy:compile_api'
     ]);
 
     /**

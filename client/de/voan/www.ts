@@ -3,7 +3,6 @@ module de.voan.www {
             'templates-app',
             'templates-common',
             'ngRoute',
-            'de.voan.www.todo',
             'de.voan.www.user'
         ])
 

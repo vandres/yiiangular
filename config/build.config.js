@@ -77,7 +77,8 @@ module.exports = {
     vendor_files: {
         js: [
             '<%= src_dir %>/vendor/angular/angular.js',
-            '<%= src_dir %>/vendor/angular-route/angular-route.js'
+            '<%= src_dir %>/vendor/angular-route/angular-route.js',
+            '<%= src_dir %>/vendor/angular-resource/angular-resource.js'
         ],
         css: [
         ],

@@ -1,12 +1,10 @@
-angularjs-typescript
+yiiangularc
 ====================
-
-This repository is planned as bootstrap for AngularJS projects
 
 Installation
 ------------
 
-You need grunt-cli, npm, bower and tsd in the first place.
+You need php>=5.4, grunt-cli, npm, bower and tsd in the first place.
 
 ```cd config ```
 
@@ -25,8 +23,3 @@ Development:
 Production:
 
 ```grunt ```
-
-
-Credits
--------------
-https://github.com/ngbp/ngbp

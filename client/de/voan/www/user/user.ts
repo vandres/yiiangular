@@ -1,8 +1,8 @@
 module de.voan.www.user {
+    import services = de.voan.www.user.services;
+
     angular.module('de.voan.www.user', [
             'ngRoute',
-            'library.shared1',
-            'de.voan.common.package1',
             'de.voan.www.user.services'
         ])
 
@@ -13,7 +13,20 @@ module de.voan.www.user {
             });
         })
 
-        .controller('de.voan.www.user.index', function ($scope) {
+        .controller('de.voan.www.user.index', function ($scope, UserService:services.IUserResource) {
             $scope.header = 'user.IndexController';
+            $scope.users = UserService.query();
+            $scope.newuser = '';
+            $scope.save = function(username) {
+                UserService.save({name: username}, function() {
+                    $scope.newuser = '';
+                    $scope.users = UserService.query();
+                });
+            };
+            $scope.delete = function(user) {
+                UserService.delete({id: user.id}, function() {
+                    $scope.users = UserService.query();
+                });
+            };
         });
 }
